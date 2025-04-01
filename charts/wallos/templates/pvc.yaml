@@ -1,0 +1,43 @@
+{{- if and .Values.persistence.db.enabled (not .Values.persistence.db.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "wallos.db.pvc.name" . }}
+  labels:
+    {{- include "wallos.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- toYaml .Values.persistence.db.accessModes | nindent 4 }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.db.size }}
+  {{- if .Values.persistence.db.storageClass }}
+  {{- if (eq "-" .Values.persistence.db.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.persistence.db.storageClass }}"
+  {{- end }}
+  {{- end }}
+---
+{{- end }}
+{{- if and .Values.persistence.logos.enabled (not .Values.persistence.logos.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "wallos.logos.pvc.name" . }}
+  labels:
+    {{- include "wallos.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- toYaml .Values.persistence.logos.accessModes | nindent 4 }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.logos.size }}
+  {{- if .Values.persistence.logos.storageClass }}
+  {{- if (eq "-" .Values.persistence.logos.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.persistence.logos.storageClass }}"
+  {{- end }}
+  {{- end }}
+{{- end }}

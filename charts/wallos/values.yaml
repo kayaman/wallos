@@ -26,28 +26,28 @@ service:
   port: 80
 
 ingress:
-  enabled: false # Set to true to enable Ingress
-  className: '' # Specify Ingress class name (e.g., "nginx", "traefik")
+  enabled: false
+  className: ''
   annotations: {}
   hosts:
-    - host: wallos.magj.local # Replace with your desired hostname
+    - host: wallos.magj.local
       paths:
         - path: /
-          pathType: ImplementationSpecific # Or Prefix
+          pathType: ImplementationSpecific
   tls: []
 
 persistence:
   db:
     enabled: true
     accessModes:
-      - ReadWriteOnce # Suitable for single-replica deployments
+      - ReadWriteOnce
     size: 1Gi
     mountPath: '/var/www/html/db'
 
   logos:
     enabled: true
     accessModes:
-      - ReadWriteOnce # Suitable for single-replica deployments
+      - ReadWriteOnce
     size: 500Mi
     mountPath: '/var/www/html/images/uploads/logos'
 

@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  wallos:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-04-01T21:19:58.489301525Z"
+    description: A Helm chart for deploying Wallos, the open-source web-based subscriptions
+      manager.
+    digest: 11dc580ee3df4385965266c41816df55cf7e530be7ba30621ba5ff232929f0cd
+    maintainers:
+    - email: m@rco.sh
+      name: Marco Antonio Gonzalez Junior
+    name: wallos
+    type: application
+    urls:
+    - https://github.com/kayaman/wallos/releases/download/wallos-0.1.0/wallos-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-01T21:19:58.489307136Z"

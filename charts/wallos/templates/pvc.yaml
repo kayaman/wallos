@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: "{{ .Release.Name | default \"default-release\" }}-logos"
+  name: {{ .Release.Name | default "default-release" }}-logos
   labels:
     app: wallos
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"

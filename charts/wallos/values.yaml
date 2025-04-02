@@ -23,18 +23,22 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8888
 
 ingress:
-  enabled: false
-  className: ''
-  annotations: {}
+  enabled: true
+  className: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
   hosts:
-    - host: wallos.magj.local
+    - host: wallos.kayabox.local
       paths:
         - path: /
-          pathType: ImplementationSpecific
-  tls: []
+          pathType: Prefix
+  tls:
+    - secretName: wallos-tls
+      hosts:
+        - wallos.kayabox.local
 
 persistence:
   db:

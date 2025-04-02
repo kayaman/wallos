@@ -1,0 +1,31 @@
+replicaCount: 1
+
+image:
+  repository: bellamy/wallos
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+env:
+  TZ: 'America/Sao_Paulo'
+
+persistence:
+  enabled: true
+  db:
+    size: 1Gi
+    storageClassName: standard
+  logos:
+    size: 1Gi
+    storageClassName: standard
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

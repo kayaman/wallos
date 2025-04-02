@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}
+  labels:
+    app: wallos
+    chart: '{{ .Chart.Name }}-{{ .Chart.Version }}'
+    release: {{.Release.Name}}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: wallos
+      release: {{.Release.Name}}
+  template:
+    metadata:
+      labels:
+        app: wallos
+        release: {{.Release.Name}}
+    spec:
+      containers:
+        - name: wallos
+          image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+          imagePullPolicy: {{.Values.image.pullPolicy}}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: TZ
+              value: {{.Values.env.TZ | quote}}
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/www/html/db
+            - name: logos-data
+              mountPath: /var/www/html/images/uploads/logos
+          resources: {{- toYaml .Values.resources | nindent 12}}
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: '{{ .Release.Name }}-db'
+        - name: logos-data
+          persistentVolumeClaim:
+            claimName: '{{ .Release.Name }}-logos'

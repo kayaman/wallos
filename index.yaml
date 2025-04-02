@@ -3,6 +3,16 @@ entries:
   wallos:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-04-02T15:34:39.14933973Z"
+    description: A Helm chart for Wallos application
+    digest: a9dc4223f2e92256cde8ed8a9f0a2c892c96dfd9e5329b64113fa2a2b377827c
+    name: wallos
+    type: application
+    urls:
+    - https://github.com/kayaman/wallos/releases/download/wallos-0.1.6/wallos-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-04-02T15:18:08.930761568Z"
     description: A Helm chart for Wallos application
     digest: 7baf880bfe5e86656692595bfa17f1feca49d14973fb4a8b2eb35fa52872fd2e
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/kayaman/wallos/releases/download/wallos-0.1.5/wallos-0.1.5.tgz
     version: 0.1.5
-generated: "2025-04-02T15:18:08.930770545Z"
+generated: "2025-04-02T15:34:39.149351141Z"

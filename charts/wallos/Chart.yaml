@@ -1,9 +1,0 @@
-apiVersion: v2
-name: wallos
-description: A Helm chart for deploying Wallos, the open-source web-based subscriptions manager.
-type: application
-version: 0.1.0
-appVersion: 'latest'
-maintainers:
-  - name: Marco Antonio Gonzalez Junior
-    email: m@rco.sh
